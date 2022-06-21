@@ -6,9 +6,14 @@ using System.Threading.Tasks;
 
 namespace BracketSim
 {
-    class Team
+    public class Team
     {
         public int seed { get; set; }
         public string name { get; set; }
+
+        public Team(string name)
+        {
+            this.name = name;
+        }
     }
 }
