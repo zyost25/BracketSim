@@ -1,4 +1,5 @@
 ﻿using System;
+using System.ComponentModel;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,8 +9,9 @@ namespace BracketSim
 {
     public class League
     {
-        public List<Team> westTeams = new List<Team>();
-        public List<Team> eastTeams = new List<Team>();
+        public BindingList<Team> westTeams = new BindingList<Team>();
+        public BindingList<Team> eastTeams = new BindingList<Team>();
+        public BindingList<Game> games = new BindingList<Game>();
 
         public void AddTeam(string name, string conference)
         {
@@ -24,7 +26,7 @@ namespace BracketSim
             return;
         }
 
-        public List<Team> GetTeams(string conference)
+        public BindingList<Team> GetTeamsList(string conference)
         {
             if (conference == "East")
             {
@@ -34,6 +36,32 @@ namespace BracketSim
             {
                 return westTeams;
             }
+        }
+
+        public Team GetTeam(string name, string conference)
+        {
+            int i;
+            if (conference == "East")
+            {
+                for (i = 0; i < eastTeams.Count(); i++)
+                {
+                    if (eastTeams[i].name == name)
+                    {
+                        return eastTeams[i];
+                    }
+                }
+            }
+            else
+            {
+                for (i = 0; i < westTeams.Count(); i++)
+                {
+                    if (westTeams[i].name == name)
+                    {
+                        return westTeams[i];
+                    }
+                }
+            }
+            return new Team("");
         }
 
         public void SetTeamSeed(string teamName, string conference, int seed)
@@ -60,6 +88,12 @@ namespace BracketSim
                     }
                 }
             }
+            return;
+        }
+
+        public void AddGame(Game game)
+        {
+            games.Add(game);
             return;
         }
     }
