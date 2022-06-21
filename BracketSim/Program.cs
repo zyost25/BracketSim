@@ -16,7 +16,7 @@ namespace BracketSim
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new MainScreen());
+            Application.Run(new Bracket());
         }
     }
 }
