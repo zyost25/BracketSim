@@ -430,37 +430,37 @@ namespace BracketSim
 
         #endregion
 
-        private System.Windows.Forms.Label leftLbl1;
-        private System.Windows.Forms.Label leftLbl2;
-        private System.Windows.Forms.Label leftLbl3;
-        private System.Windows.Forms.Label leftLbl4;
-        private System.Windows.Forms.Label leftLbl6;
-        private System.Windows.Forms.Label leftLbl5;
-        private System.Windows.Forms.Label leftLbl8;
-        private System.Windows.Forms.Label leftLbl7;
-        private System.Windows.Forms.Label rightLbl8;
-        private System.Windows.Forms.Label rightLbl7;
-        private System.Windows.Forms.Label rightLbl6;
-        private System.Windows.Forms.Label rightLbl5;
-        private System.Windows.Forms.Label rightLbl4;
-        private System.Windows.Forms.Label rightLbl3;
-        private System.Windows.Forms.Label rightLbl2;
-        private System.Windows.Forms.Label rightLbl1;
-        private System.Windows.Forms.Label leftLbl9;
-        private System.Windows.Forms.Label leftLbl10;
-        private System.Windows.Forms.Label leftLbl11;
-        private System.Windows.Forms.Label leftLbl12;
-        private System.Windows.Forms.Label leftLbl13;
-        private System.Windows.Forms.Label leftLbl14;
-        private System.Windows.Forms.Label leftLbl15;
-        private System.Windows.Forms.Label rightLbl9;
-        private System.Windows.Forms.Label rightLbl10;
-        private System.Windows.Forms.Label rightLbl11;
-        private System.Windows.Forms.Label rightLbl12;
-        private System.Windows.Forms.Label rightLbl13;
-        private System.Windows.Forms.Label rightLbl14;
-        private System.Windows.Forms.Label rightLbl15;
-        private System.Windows.Forms.Label championLbl;
+        public System.Windows.Forms.Label leftLbl1;
+        public System.Windows.Forms.Label leftLbl2;
+        public System.Windows.Forms.Label leftLbl3;
+        public System.Windows.Forms.Label leftLbl4;
+        public System.Windows.Forms.Label leftLbl6;
+        public System.Windows.Forms.Label leftLbl5;
+        public System.Windows.Forms.Label leftLbl8;
+        public System.Windows.Forms.Label leftLbl7;
+        public System.Windows.Forms.Label rightLbl8;
+        public System.Windows.Forms.Label rightLbl7;
+        public System.Windows.Forms.Label rightLbl6;
+        public System.Windows.Forms.Label rightLbl5;
+        public System.Windows.Forms.Label rightLbl4;
+        public System.Windows.Forms.Label rightLbl3;
+        public System.Windows.Forms.Label rightLbl2;
+        public System.Windows.Forms.Label rightLbl1;
+        public System.Windows.Forms.Label leftLbl9;
+        public System.Windows.Forms.Label leftLbl10;
+        public System.Windows.Forms.Label leftLbl11;
+        public System.Windows.Forms.Label leftLbl12;
+        public System.Windows.Forms.Label leftLbl13;
+        public System.Windows.Forms.Label leftLbl14;
+        public System.Windows.Forms.Label leftLbl15;
+        public System.Windows.Forms.Label rightLbl9;
+        public System.Windows.Forms.Label rightLbl10;
+        public System.Windows.Forms.Label rightLbl11;
+        public System.Windows.Forms.Label rightLbl12;
+        public System.Windows.Forms.Label rightLbl13;
+        public System.Windows.Forms.Label rightLbl14;
+        public System.Windows.Forms.Label rightLbl15;
+        public System.Windows.Forms.Label championLbl;
     }
 }
 

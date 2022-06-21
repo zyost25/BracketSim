@@ -35,5 +35,32 @@ namespace BracketSim
                 return westTeams;
             }
         }
+
+        public void SetTeamSeed(string teamName, string conference, int seed)
+        {
+            if (conference == "East")
+            {
+                int i;
+                for (i = 0; i < eastTeams.Count(); i++)
+                {
+                    if (eastTeams[i].name == teamName)
+                    {
+                        eastTeams[i].seed = seed;
+                    }
+                }
+            }
+            else
+            {
+                int i;
+                for (i = 0; i < westTeams.Count(); i++)
+                {
+                    if (westTeams[i].name == teamName)
+                    {
+                        westTeams[i].seed = seed;
+                    }
+                }
+            }
+            return;
+        }
     }
 }

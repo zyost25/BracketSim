@@ -15,11 +15,10 @@ namespace BracketSim
         public WelcomeScreen()
         {
             InitializeComponent();
-            ResetSeeds();
             SetupLeague();
         }
 
-        public List<int> seeds = new List<int>();
+        public List<int> seeds = new List<int> { 1, 8, 4, 5, 3, 6, 2, 7 };
 
         public League league = new League();
         
@@ -60,13 +59,6 @@ namespace BracketSim
             return;
         }
 
-        public void ResetSeeds()
-        {
-            seeds.Clear();
-            seeds.AddRange(new List<int>() { 1, 8, 4, 5, 3, 6, 2, 7 });
-            return;
-        }
-
         public Bracket FillBracket()
         {
             Bracket bracket = new Bracket();
@@ -77,7 +69,67 @@ namespace BracketSim
             {
                 Team teamToAdd = eastField[rnd.Next(1, eastField.Count())];
                 eastField.Remove(teamToAdd);
-
+                league.SetTeamSeed(teamToAdd.name, "East", seeds[i]);
+                switch (i)
+                {
+                    case 0:
+                        bracket.rightLbl1.Text = teamToAdd.name + " (" + seeds[i] + ")";
+                        break;
+                    case 1:
+                        bracket.rightLbl2.Text = teamToAdd.name + " (" + seeds[i] + ")";
+                        break;
+                    case 2:
+                        bracket.rightLbl3.Text = teamToAdd.name + " (" + seeds[i] + ")";
+                        break;
+                    case 3:
+                        bracket.rightLbl4.Text = teamToAdd.name + " (" + seeds[i] + ")";
+                        break;
+                    case 4:
+                        bracket.rightLbl5.Text = teamToAdd.name + " (" + seeds[i] + ")";
+                        break;
+                    case 5:
+                        bracket.rightLbl6.Text = teamToAdd.name + " (" + seeds[i] + ")";
+                        break;
+                    case 6:
+                        bracket.rightLbl7.Text = teamToAdd.name + " (" + seeds[i] + ")";
+                        break;
+                    case 7:
+                        bracket.rightLbl8.Text = teamToAdd.name + " (" + seeds[i] + ")";
+                        break;
+                }
+            }
+            for (i = 0; i < seeds.Count(); i++)
+            {
+                Team teamToAdd = westField[rnd.Next(1, westField.Count())];
+                westField.Remove(teamToAdd);
+                league.SetTeamSeed(teamToAdd.name, "East", seeds[i]);
+                switch (i)
+                {
+                    case 0:
+                        bracket.leftLbl1.Text = "(" + seeds[i] + ") " + teamToAdd.name;
+                        break;
+                    case 1:
+                        bracket.leftLbl2.Text = "(" + seeds[i] + ") " + teamToAdd.name;
+                        break;
+                    case 2:
+                        bracket.leftLbl3.Text = "(" + seeds[i] + ") " + teamToAdd.name;
+                        break;
+                    case 3:
+                        bracket.leftLbl4.Text = "(" + seeds[i] + ") " + teamToAdd.name;
+                        break;
+                    case 4:
+                        bracket.leftLbl5.Text = "(" + seeds[i] + ") " + teamToAdd.name;
+                        break;
+                    case 5:
+                        bracket.leftLbl6.Text = "(" + seeds[i] + ") " + teamToAdd.name;
+                        break;
+                    case 6:
+                        bracket.leftLbl7.Text = "(" + seeds[i] + ") " + teamToAdd.name;
+                        break;
+                    case 7:
+                        bracket.leftLbl8.Text = "(" + seeds[i] + ") " + teamToAdd.name;
+                        break;
+                }
             }
             return bracket;
         }
@@ -88,7 +140,5 @@ namespace BracketSim
             bracket.Show();
             this.Hide();
         }
-
-
     }
 }
