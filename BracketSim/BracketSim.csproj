@@ -54,6 +54,7 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Team.cs" />
     <EmbeddedResource Include="Bracket.resx">
       <DependentUpon>Bracket.cs</DependentUpon>
     </EmbeddedResource>
