@@ -121,7 +121,6 @@ namespace BracketSim
 
         public void FillSecondRound()
         {
-            Team teamToAdd = new Team("");
             List<Label> leftLabels = new List<Label> { bracket.left2ndName1, bracket.left2ndName2, 
                 bracket.left2ndName3, bracket.left2ndName4 };
             List<Label> rightLabels = new List<Label> { bracket.right2ndName1, bracket.right2ndName2, 
@@ -143,6 +142,97 @@ namespace BracketSim
             return;
         }
 
+        public void SimSecondRound()
+        {
+            int i;
+            //west second round
+            for (i = 0; i < league.games.Count() - 1; i += 2)
+            {
+                Team team1 = league.games[i].winner;
+                Team team2 = league.games[i + 1].winner;
+                int team1Score = rnd.Next(60, 110);
+                int team2Score = rnd.Next(60, 110);
+                Game game = new Game(team1, team2, team1Score, team2Score);
+                league.games.Add(game);
+            }
+            //east second round
+            for (i = 4; i < league.games.Count() - 1; i += 2)
+            {
+                Team team1 = league.games[i].winner;
+                Team team2 = league.games[i + 1].winner;
+                int team1Score = rnd.Next(60, 110);
+                int team2Score = rnd.Next(60, 110);
+                Game game = new Game(team1, team2, team1Score, team2Score);
+                league.games.Add(game);
+            }
+            return;
+        }
+
+        public void FillThirdRound()
+        {
+            List<Label> leftLabels = new List<Label> { bracket.left3rdName1, bracket.left3rdName2 };
+            List<Label> rightLabels = new List<Label> { bracket.right3rdName1, bracket.right3rdName2 };
+            int i;
+            int gameCounter = 8;
+            //set west labels
+            for (i = 0; i < leftLabels.Count(); i++)
+            {
+                leftLabels[i].Text = league.games[gameCounter].winner.name;
+                gameCounter++;
+            }
+            //set east labels
+            for (i = 0; i < rightLabels.Count(); i++)
+            {
+                rightLabels[i].Text = league.games[gameCounter].winner.name;
+                gameCounter++;
+            }
+            return;
+        }
+
+        public void SimFourthRound()
+        {
+            //west final
+            Team team1 = league.games[8].winner;
+            Team team2 = league.games[9].winner;
+            int team1Score = rnd.Next(60, 110);
+            int team2Score = rnd.Next(60, 110);
+            Game game = new Game(team1, team2, team1Score, team2Score);
+            league.games.Add(game);
+
+            //east final
+            team1 = league.games[10].winner;
+            team2 = league.games[11].winner;
+            team1Score = rnd.Next(60, 110);
+            team2Score = rnd.Next(60, 110);
+            game = new Game(team1, team2, team1Score, team2Score);
+            league.games.Add(game);
+            return;
+        }
+
+        public void FillChampionship()
+        {
+            bracket.leftChampionName.Text = league.games[12].winner.name;
+            bracket.rightChampionName.Text = league.games[13].winner.name;
+            return;
+        }
+
+        public void SimChampionship()
+        {
+            Team team1 = league.games[12].winner;
+            Team team2 = league.games[13].winner;
+            int team1Score = rnd.Next(60, 110);
+            int team2Score = rnd.Next(60, 110);
+            Game game = new Game(team1, team2, team1Score, team2Score);
+            league.games.Add(game);
+            return;
+        }
+
+        public void FillChampion()
+        {
+            bracket.championSeed.Text = league.games[14].winner.name;
+            return;
+        }
+
         private void startBtn_Click(object sender, EventArgs e)
         {
             bracket = FillFirstRound();
@@ -153,6 +243,12 @@ namespace BracketSim
         {
             SimFirstRound();
             FillSecondRound();
+            SimSecondRound();
+            FillThirdRound();
+            SimFourthRound();
+            FillChampionship();
+            SimChampionship();
+            FillChampion();
             return;
         }
     }
