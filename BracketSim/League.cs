@@ -11,6 +11,8 @@ namespace BracketSim
     {
         public BindingList<Team> westTeams = new BindingList<Team>();
         public BindingList<Team> eastTeams = new BindingList<Team>();
+        public BindingList<Team> westField = new BindingList<Team>();
+        public BindingList<Team> eastField = new BindingList<Team>();
         public BindingList<Game> games = new BindingList<Game>();
 
         public void AddTeam(string name, string conference)
@@ -36,38 +38,6 @@ namespace BracketSim
             {
                 return westTeams;
             }
-        }
-
-        public Team GetTeam(string name, string conference)
-        {
-            int i;
-            if (conference == "East")
-            {
-                for (i = 0; i < eastTeams.Count(); i++)
-                {
-                    if (eastTeams[i].name == name)
-                    {
-                        return eastTeams[i];
-                    }
-                }
-            }
-            else
-            {
-                for (i = 0; i < westTeams.Count(); i++)
-                {
-                    if (westTeams[i].name == name)
-                    {
-                        return westTeams[i];
-                    }
-                }
-            }
-            return new Team("");
-        }
-
-        public void AddGame(Game game)
-        {
-            games.Add(game);
-            return;
         }
     }
 }

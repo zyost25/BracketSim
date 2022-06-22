@@ -20,13 +20,11 @@ namespace BracketSim
 
         public List<int> seeds = new List<int> { 1, 8, 4, 5, 3, 6, 2, 7 };
 
-        public BindingList<Team> westField = new BindingList<Team>();
-
-        public BindingList<Team> eastField = new BindingList<Team>();
-
         public League league = new League();
         
         public Random rnd = new Random();
+
+        public Bracket bracket;
 
         public void SetupLeague()
         {
@@ -81,7 +79,7 @@ namespace BracketSim
                 teamToAdd = easternConference[rnd.Next(1, easternConference.Count())];
                 easternConference.Remove(teamToAdd);
                 teamToAdd.seed = seeds[i];
-                eastField.Add(teamToAdd);
+                league.eastField.Add(teamToAdd);
                 rightLabels[i].Text = teamToAdd.name;
             }
             for (i = 0; i < seeds.Count(); i++)
@@ -89,17 +87,73 @@ namespace BracketSim
                 teamToAdd = westernConference[rnd.Next(1, westernConference.Count())];
                 westernConference.Remove(teamToAdd);
                 teamToAdd.seed = seeds[i];
-                westField.Add(teamToAdd);
+                league.westField.Add(teamToAdd);
                 leftLabels[i].Text = teamToAdd.name;
             }
             return bracket;
         }
 
+        public void SimFirstRound()
+        {
+            int i;
+            //west first round
+            for (i = 0; i < league.westField.Count(); i += 2)
+            {
+                Team team1 = league.westField[i];
+                Team team2 = league.westField[i + 1];
+                int team1Score = rnd.Next(60, 110);
+                int team2Score = rnd.Next(60, 110);
+                Game game = new Game(team1, team2, team1Score, team2Score);
+                league.games.Add(game);
+            }
+            //east first round
+            for (i = 0; i < league.eastField.Count(); i += 2)
+            {
+                Team team1 = league.eastField[i];
+                Team team2 = league.eastField[i + 1];
+                int team1Score = rnd.Next(60, 110);
+                int team2Score = rnd.Next(60, 110);
+                Game game = new Game(team1, team2, team1Score, team2Score);
+                league.games.Add(game);
+            }
+            return;
+        }
+
+        public void FillSecondRound()
+        {
+            Team teamToAdd = new Team("");
+            List<Label> leftLabels = new List<Label> { bracket.left2ndName1, bracket.left2ndName2, 
+                bracket.left2ndName3, bracket.left2ndName4 };
+            List<Label> rightLabels = new List<Label> { bracket.right2ndName1, bracket.right2ndName2, 
+                bracket.right2ndName3, bracket.right2ndName4 };
+            int i;
+            int gameCounter = 0;
+            //set west labels
+            for (i = 0; i < leftLabels.Count(); i++)
+            {
+                leftLabels[i].Text = league.games[gameCounter].winner.name;
+                gameCounter++;
+            }
+            //set east labels
+            for (i = 0; i < rightLabels.Count(); i++)
+            {
+                rightLabels[i].Text = league.games[gameCounter].winner.name;
+                gameCounter++;
+            }
+            return;
+        }
+
         private void startBtn_Click(object sender, EventArgs e)
         {
-            Bracket bracket = FillFirstRound();
+            bracket = FillFirstRound();
             bracket.Show();
-            this.Hide();
+        }
+
+        private void simBtn_Click(object sender, EventArgs e)
+        {
+            SimFirstRound();
+            FillSecondRound();
+            return;
         }
     }
 }

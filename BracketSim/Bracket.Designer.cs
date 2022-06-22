@@ -60,7 +60,6 @@ namespace BracketSim
             this.right3rdSeed2 = new System.Windows.Forms.Label();
             this.rightChampionSeed = new System.Windows.Forms.Label();
             this.championSeed = new System.Windows.Forms.Label();
-            this.simBtn = new System.Windows.Forms.Button();
             this.leftName1 = new System.Windows.Forms.Label();
             this.leftName2 = new System.Windows.Forms.Label();
             this.leftName3 = new System.Windows.Forms.Label();
@@ -399,16 +398,6 @@ namespace BracketSim
             this.championSeed.Size = new System.Drawing.Size(0, 24);
             this.championSeed.TabIndex = 30;
             // 
-            // simBtn
-            // 
-            this.simBtn.Location = new System.Drawing.Point(430, 305);
-            this.simBtn.Name = "simBtn";
-            this.simBtn.Size = new System.Drawing.Size(75, 23);
-            this.simBtn.TabIndex = 31;
-            this.simBtn.Text = "Sim Tournament";
-            this.simBtn.UseVisualStyleBackColor = true;
-            this.simBtn.Click += new System.EventHandler(this.simBtn_Click);
-            // 
             // leftName1
             // 
             this.leftName1.AutoSize = true;
@@ -714,7 +703,6 @@ namespace BracketSim
             this.Controls.Add(this.leftName3);
             this.Controls.Add(this.leftName2);
             this.Controls.Add(this.leftName1);
-            this.Controls.Add(this.simBtn);
             this.Controls.Add(this.championSeed);
             this.Controls.Add(this.rightChampionSeed);
             this.Controls.Add(this.right3rdSeed2);
@@ -788,7 +776,6 @@ namespace BracketSim
         public System.Windows.Forms.Label right3rdSeed2;
         public System.Windows.Forms.Label rightChampionSeed;
         public System.Windows.Forms.Label championSeed;
-        private System.Windows.Forms.Button simBtn;
         public System.Windows.Forms.Label leftName1;
         public System.Windows.Forms.Label leftName2;
         public System.Windows.Forms.Label leftName3;

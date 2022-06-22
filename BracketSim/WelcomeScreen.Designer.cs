@@ -31,6 +31,7 @@ namespace BracketSim
         {
             this.titleLbl = new System.Windows.Forms.Label();
             this.startBtn = new System.Windows.Forms.Button();
+            this.simBtn = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // titleLbl
@@ -45,7 +46,7 @@ namespace BracketSim
             // 
             // startBtn
             // 
-            this.startBtn.Location = new System.Drawing.Point(112, 126);
+            this.startBtn.Location = new System.Drawing.Point(64, 142);
             this.startBtn.Name = "startBtn";
             this.startBtn.Size = new System.Drawing.Size(75, 23);
             this.startBtn.TabIndex = 1;
@@ -53,11 +54,22 @@ namespace BracketSim
             this.startBtn.UseVisualStyleBackColor = true;
             this.startBtn.Click += new System.EventHandler(this.startBtn_Click);
             // 
+            // simBtn
+            // 
+            this.simBtn.Location = new System.Drawing.Point(162, 142);
+            this.simBtn.Name = "simBtn";
+            this.simBtn.Size = new System.Drawing.Size(75, 23);
+            this.simBtn.TabIndex = 2;
+            this.simBtn.Text = "Sim Bracket";
+            this.simBtn.UseVisualStyleBackColor = true;
+            this.simBtn.Click += new System.EventHandler(this.simBtn_Click);
+            // 
             // WelcomeScreen
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(304, 246);
+            this.Controls.Add(this.simBtn);
             this.Controls.Add(this.startBtn);
             this.Controls.Add(this.titleLbl);
             this.Name = "WelcomeScreen";
@@ -71,5 +83,6 @@ namespace BracketSim
 
         private System.Windows.Forms.Label titleLbl;
         private System.Windows.Forms.Button startBtn;
+        private System.Windows.Forms.Button simBtn;
     }
 }
