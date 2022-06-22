@@ -74,21 +74,23 @@ namespace BracketSim
             BindingList<Team> easternConference = league.GetTeamsList("East");
             BindingList<Team> westernConference = league.GetTeamsList("West");
             int i;
-            for (i = 0; i < seeds.Count(); i++)
-            {
-                teamToAdd = easternConference[rnd.Next(1, easternConference.Count())];
-                easternConference.Remove(teamToAdd);
-                teamToAdd.seed = seeds[i];
-                league.eastField.Add(teamToAdd);
-                rightLabels[i].Text = teamToAdd.name;
-            }
+            //fill in west bracket
             for (i = 0; i < seeds.Count(); i++)
             {
                 teamToAdd = westernConference[rnd.Next(1, westernConference.Count())];
                 westernConference.Remove(teamToAdd);
                 teamToAdd.seed = seeds[i];
                 league.westField.Add(teamToAdd);
-                leftLabels[i].Text = teamToAdd.name;
+                leftLabels[i].Text = "(" + teamToAdd.seed + ") " + teamToAdd.name;
+            }
+            //fill in east bracket
+            for (i = 0; i < seeds.Count(); i++)
+            {
+                teamToAdd = easternConference[rnd.Next(1, easternConference.Count())];
+                easternConference.Remove(teamToAdd);
+                teamToAdd.seed = seeds[i];
+                league.eastField.Add(teamToAdd);
+                rightLabels[i].Text = teamToAdd.name + " (" + teamToAdd.seed + ")";
             }
             return bracket;
         }
@@ -99,22 +101,12 @@ namespace BracketSim
             //west first round
             for (i = 0; i < league.westField.Count(); i += 2)
             {
-                Team team1 = league.westField[i];
-                Team team2 = league.westField[i + 1];
-                int team1Score = rnd.Next(60, 110);
-                int team2Score = rnd.Next(60, 110);
-                Game game = new Game(team1, team2, team1Score, team2Score);
-                league.games.Add(game);
+                league.PlayGame(league.westField[i], league.westField[i + 1]);
             }
             //east first round
             for (i = 0; i < league.eastField.Count(); i += 2)
             {
-                Team team1 = league.eastField[i];
-                Team team2 = league.eastField[i + 1];
-                int team1Score = rnd.Next(60, 110);
-                int team2Score = rnd.Next(60, 110);
-                Game game = new Game(team1, team2, team1Score, team2Score);
-                league.games.Add(game);
+                league.PlayGame(league.eastField[i], league.eastField[i + 1]);
             }
             return;
         }
@@ -130,13 +122,13 @@ namespace BracketSim
             //set west labels
             for (i = 0; i < leftLabels.Count(); i++)
             {
-                leftLabels[i].Text = league.games[gameCounter].winner.name;
+                leftLabels[i].Text = "(" + league.games[gameCounter].winner.seed + ") " + league.games[gameCounter].winner.name;
                 gameCounter++;
             }
             //set east labels
             for (i = 0; i < rightLabels.Count(); i++)
             {
-                rightLabels[i].Text = league.games[gameCounter].winner.name;
+                rightLabels[i].Text = league.games[gameCounter].winner.name + " (" + league.games[gameCounter].winner.seed + ")";
                 gameCounter++;
             }
             return;
@@ -148,22 +140,12 @@ namespace BracketSim
             //west second round
             for (i = 0; i < league.games.Count() - 1; i += 2)
             {
-                Team team1 = league.games[i].winner;
-                Team team2 = league.games[i + 1].winner;
-                int team1Score = rnd.Next(60, 110);
-                int team2Score = rnd.Next(60, 110);
-                Game game = new Game(team1, team2, team1Score, team2Score);
-                league.games.Add(game);
+                league.PlayGame(league.games[i].winner, league.games[i + 1].winner);
             }
             //east second round
             for (i = 4; i < league.games.Count() - 1; i += 2)
             {
-                Team team1 = league.games[i].winner;
-                Team team2 = league.games[i + 1].winner;
-                int team1Score = rnd.Next(60, 110);
-                int team2Score = rnd.Next(60, 110);
-                Game game = new Game(team1, team2, team1Score, team2Score);
-                league.games.Add(game);
+                league.PlayGame(league.games[i].winner, league.games[i + 1].winner);
             }
             return;
         }
@@ -177,13 +159,13 @@ namespace BracketSim
             //set west labels
             for (i = 0; i < leftLabels.Count(); i++)
             {
-                leftLabels[i].Text = league.games[gameCounter].winner.name;
+                leftLabels[i].Text = "(" + league.games[gameCounter].winner.seed + ") " + league.games[gameCounter].winner.name;
                 gameCounter++;
             }
             //set east labels
             for (i = 0; i < rightLabels.Count(); i++)
             {
-                rightLabels[i].Text = league.games[gameCounter].winner.name;
+                rightLabels[i].Text = league.games[gameCounter].winner.name + " (" + league.games[gameCounter].winner.seed + ")";
                 gameCounter++;
             }
             return;
@@ -192,44 +174,29 @@ namespace BracketSim
         public void SimFourthRound()
         {
             //west final
-            Team team1 = league.games[8].winner;
-            Team team2 = league.games[9].winner;
-            int team1Score = rnd.Next(60, 110);
-            int team2Score = rnd.Next(60, 110);
-            Game game = new Game(team1, team2, team1Score, team2Score);
-            league.games.Add(game);
+            league.PlayGame(league.games[8].winner, league.games[9].winner);
 
             //east final
-            team1 = league.games[10].winner;
-            team2 = league.games[11].winner;
-            team1Score = rnd.Next(60, 110);
-            team2Score = rnd.Next(60, 110);
-            game = new Game(team1, team2, team1Score, team2Score);
-            league.games.Add(game);
+            league.PlayGame(league.games[10].winner, league.games[11].winner);
             return;
         }
 
         public void FillChampionship()
         {
-            bracket.leftChampionName.Text = league.games[12].winner.name;
-            bracket.rightChampionName.Text = league.games[13].winner.name;
+            bracket.leftChampionName.Text = "(" + league.games[12].winner.seed + ") " + league.games[12].winner.name;
+            bracket.rightChampionName.Text = league.games[13].winner.name + " (" + league.games[13].winner.seed + ")";
             return;
         }
 
         public void SimChampionship()
         {
-            Team team1 = league.games[12].winner;
-            Team team2 = league.games[13].winner;
-            int team1Score = rnd.Next(60, 110);
-            int team2Score = rnd.Next(60, 110);
-            Game game = new Game(team1, team2, team1Score, team2Score);
-            league.games.Add(game);
+            league.PlayGame(league.games[12].winner, league.games[13].winner);
             return;
         }
 
         public void FillChampion()
         {
-            bracket.championSeed.Text = league.games[14].winner.name;
+            bracket.championLbl.Text = "(" + league.games[14].winner.seed + ") " + league.games[14].winner.name;
             return;
         }
 

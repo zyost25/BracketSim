@@ -17,11 +17,9 @@ namespace BracketSim
             InitializeComponent();
         }
 
-        public int gameCounter = 0;
-
         public WelcomeScreen welcomeScreen = new WelcomeScreen();
 
-        public void MainScreen_Paint(object sender, PaintEventArgs e)
+        public void Bracket_Paint(object sender, PaintEventArgs e)
         {
             Color black = Color.FromArgb(255, 0, 0, 0);
             Pen blackPen = new Pen(black);

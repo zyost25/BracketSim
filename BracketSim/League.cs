@@ -14,6 +14,7 @@ namespace BracketSim
         public BindingList<Team> westField = new BindingList<Team>();
         public BindingList<Team> eastField = new BindingList<Team>();
         public BindingList<Game> games = new BindingList<Game>();
+        public Random rnd = new Random();
 
         public void AddTeam(string name, string conference)
         {
@@ -38,6 +39,14 @@ namespace BracketSim
             {
                 return westTeams;
             }
+        }
+
+        public void PlayGame(Team team1, Team team2)
+        {
+            int team1Score = rnd.Next(60, 110);
+            int team2Score = rnd.Next(60, 110);
+            games.Add(new Game(team1, team2, team1Score, team2Score));
+            return;
         }
     }
 }
