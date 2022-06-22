@@ -111,7 +111,7 @@ namespace BracketSim
             return;
         }
 
-        private void simGameBtn_Click(object sender, EventArgs e)
+        private void simBtn_Click(object sender, EventArgs e)
         {
             int team1Score = welcomeScreen.rnd.Next(60, 120);
             int team2Score = welcomeScreen.rnd.Next(60, 120);
