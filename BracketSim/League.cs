@@ -29,15 +29,15 @@ namespace BracketSim
             return;
         }
 
-        public BindingList<Team> GetTeamsList(string conference)
+        public List<Team> GetTeamsList(string conference)
         {
             if (conference == "East")
             {
-                return eastTeams;
+                return eastTeams.ToList();
             }
             else
             {
-                return westTeams;
+                return westTeams.ToList();
             }
         }
 
@@ -46,6 +46,12 @@ namespace BracketSim
             int team1Score = rnd.Next(60, 110);
             int team2Score = rnd.Next(60, 110);
             games.Add(new Game(team1, team2, team1Score, team2Score));
+            return;
+        }
+
+        public void ClearGames()
+        {
+            games.Clear();
             return;
         }
     }

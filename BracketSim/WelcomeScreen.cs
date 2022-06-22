@@ -25,6 +25,9 @@ namespace BracketSim
         public Random rnd = new Random();
 
         public Bracket bracket;
+        public List<Team> easternConference;
+        public List<Team> westernConference;
+        public int gameCounter;
 
         public void SetupLeague()
         {
@@ -63,7 +66,9 @@ namespace BracketSim
 
         public Bracket FillFirstRound()
         {
-            Bracket bracket = new Bracket();
+            bracket = new Bracket();
+            easternConference = league.GetTeamsList("East");
+            westernConference = league.GetTeamsList("West");
             Team teamToAdd = new Team("");
             List<Label> leftLabels = new List<Label> { bracket.leftName1, bracket.leftName2,
                 bracket.leftName3, bracket.leftName4, bracket.leftName5, bracket.leftName6,
@@ -71,10 +76,9 @@ namespace BracketSim
             List<Label> rightLabels = new List<Label> { bracket.rightName1, bracket.rightName2,
                 bracket.rightName3, bracket.rightName4, bracket.rightName5, bracket.rightName6,
                 bracket.rightName7, bracket.rightName8 };
-            BindingList<Team> easternConference = league.GetTeamsList("East");
-            BindingList<Team> westernConference = league.GetTeamsList("West");
             int i;
             //fill in west bracket
+            Console.WriteLine(westernConference.Count());
             for (i = 0; i < seeds.Count(); i++)
             {
                 teamToAdd = westernConference[rnd.Next(1, westernConference.Count())];
@@ -118,7 +122,6 @@ namespace BracketSim
             List<Label> rightLabels = new List<Label> { bracket.right2ndName1, bracket.right2ndName2, 
                 bracket.right2ndName3, bracket.right2ndName4 };
             int i;
-            int gameCounter = 0;
             //set west labels
             for (i = 0; i < leftLabels.Count(); i++)
             {
@@ -204,10 +207,12 @@ namespace BracketSim
         {
             bracket = FillFirstRound();
             bracket.Show();
+            return;
         }
 
         private void simBtn_Click(object sender, EventArgs e)
         {
+            league.ClearGames();
             SimFirstRound();
             FillSecondRound();
             SimSecondRound();
