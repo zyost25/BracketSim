@@ -28,9 +28,12 @@ namespace BracketSim
         public List<Team> easternConference;
         public List<Team> westernConference;
         public int gameCounter;
+        public int simCounter = 0;
 
         public void SetupLeague()
         {
+            gameCounter = 0;
+            league = new League();
             league.AddTeam("Heat", "East");
             league.AddTeam("Celtics", "East");
             league.AddTeam("Bucks", "East");
@@ -66,6 +69,7 @@ namespace BracketSim
 
         public Bracket FillFirstRound()
         {
+            simCounter++;
             bracket = new Bracket();
             easternConference = league.GetTeamsList("East");
             westernConference = league.GetTeamsList("West");
@@ -204,9 +208,11 @@ namespace BracketSim
 
         private void startBtn_Click(object sender, EventArgs e)
         {
-            league = new League();
+            if (simCounter > 0)
+            {
+                bracket.Close();
+            }
             SetupLeague();
-            gameCounter = 0;
             bracket = FillFirstRound();
             bracket.Show();
             return;
