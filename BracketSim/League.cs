@@ -15,6 +15,7 @@ namespace BracketSim
         public BindingList<Team> eastField = new BindingList<Team>();
         public BindingList<Game> games = new BindingList<Game>();
         public Random rnd = new Random();
+        public int gameCounter = 0;
 
         public void AddTeam(string name, string conference)
         {
@@ -46,6 +47,7 @@ namespace BracketSim
             int team1Score = rnd.Next(60, 110);
             int team2Score = rnd.Next(60, 110);
             games.Add(new Game(team1, team2, team1Score, team2Score));
+            gameCounter++;
             return;
         }
 
