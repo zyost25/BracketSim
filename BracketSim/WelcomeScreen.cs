@@ -78,7 +78,6 @@ namespace BracketSim
                 bracket.rightName7, bracket.rightName8 };
             int i;
             //fill in west bracket
-            Console.WriteLine(westernConference.Count());
             for (i = 0; i < seeds.Count(); i++)
             {
                 teamToAdd = westernConference[rnd.Next(1, westernConference.Count())];
@@ -205,6 +204,9 @@ namespace BracketSim
 
         private void startBtn_Click(object sender, EventArgs e)
         {
+            league = new League();
+            SetupLeague();
+            gameCounter = 0;
             bracket = FillFirstRound();
             bracket.Show();
             return;
@@ -212,7 +214,6 @@ namespace BracketSim
 
         private void simBtn_Click(object sender, EventArgs e)
         {
-            league.ClearGames();
             SimFirstRound();
             FillSecondRound();
             SimSecondRound();
