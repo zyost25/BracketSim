@@ -156,12 +156,31 @@ namespace BracketSim
             return;
         }
 
+        public void clearLabels()
+        {
+            List<Label> labels = new List<Label> { this.championLbl, this.leftName1, 
+                this.leftName2, this.leftName3, this.leftName4, this.leftName5, 
+                this.leftName6, this.leftName7, this.leftName8, this.rightName1, 
+                this.rightName2, this.rightName3, this.rightName4, this.rightName5, 
+                this.rightName6, this.rightName7, this.rightName8, this.left2ndName1, 
+                this.left2ndName2, this.left2ndName3, this.left2ndName4, this.left3rdName1, 
+                this.left3rdName2, this.right2ndName1, this.right2ndName2, this.right2ndName3, 
+                this.right2ndName4, this.right3rdName1, this.right3rdName2, this.leftChampionName, 
+                this.rightChampionName };
+            int i;
+            for (i = 0; i < labels.Count(); i++)
+            {
+                labels[i].Text = "";
+            }
+        }
+
         public void FillFirstRound()
         {
             simCounter++;
             easternConference = league.GetTeamsList("East");
             westernConference = league.GetTeamsList("West");
             Team teamToAdd = new Team("");
+            clearLabels();
             List<Label> leftLabels = new List<Label> { this.leftName1, this.leftName2,
                 this.leftName3, this.leftName4, this.leftName5, this.leftName6,
                 this.leftName7, this.leftName8 };

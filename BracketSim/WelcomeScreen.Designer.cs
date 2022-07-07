@@ -64,13 +64,12 @@ namespace BracketSim
             this.leftChampionName = new System.Windows.Forms.Label();
             this.rightChampionName = new System.Windows.Forms.Label();
             this.SuspendLayout();
-            this.SuspendLayout();
             // 
             // titleLbl
             // 
             this.titleLbl.AutoSize = true;
             this.titleLbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
-            this.titleLbl.Location = new System.Drawing.Point(529, 9);
+            this.titleLbl.Location = new System.Drawing.Point(384, 16);
             this.titleLbl.Name = "titleLbl";
             this.titleLbl.Size = new System.Drawing.Size(236, 24);
             this.titleLbl.TabIndex = 0;
@@ -78,7 +77,7 @@ namespace BracketSim
             // 
             // startBtn
             // 
-            this.startBtn.Location = new System.Drawing.Point(788, 12);
+            this.startBtn.Location = new System.Drawing.Point(421, 51);
             this.startBtn.Name = "startBtn";
             this.startBtn.Size = new System.Drawing.Size(75, 23);
             this.startBtn.TabIndex = 1;
@@ -88,14 +87,13 @@ namespace BracketSim
             // 
             // simBtn
             // 
-            this.simBtn.Location = new System.Drawing.Point(869, 12);
+            this.simBtn.Location = new System.Drawing.Point(502, 51);
             this.simBtn.Name = "simBtn";
             this.simBtn.Size = new System.Drawing.Size(75, 23);
             this.simBtn.TabIndex = 2;
             this.simBtn.Text = "Sim Bracket";
             this.simBtn.UseVisualStyleBackColor = true;
             this.simBtn.Click += new System.EventHandler(this.simBtn_Click);
-            
             // 
             // championLbl
             // 
@@ -377,10 +375,10 @@ namespace BracketSim
             this.rightChampionName.Size = new System.Drawing.Size(0, 13);
             this.rightChampionName.TabIndex = 61;
             // 
-            // Bracket
+            // WelcomeScreen
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1000, 350);
             this.Controls.Add(this.rightChampionName);
             this.Controls.Add(this.leftChampionName);
@@ -413,20 +411,15 @@ namespace BracketSim
             this.Controls.Add(this.leftName2);
             this.Controls.Add(this.leftName1);
             this.Controls.Add(this.championLbl);
-            this.Paint += new System.Windows.Forms.PaintEventHandler(this.Bracket_Paint);
-            // 
-            // WelcomeScreen
-            // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1320, 635);
             this.Controls.Add(this.simBtn);
             this.Controls.Add(this.startBtn);
             this.Controls.Add(this.titleLbl);
             this.Name = "WelcomeScreen";
             this.Text = "WelcomeScreen";
+            this.Paint += new System.Windows.Forms.PaintEventHandler(this.Bracket_Paint);
             this.ResumeLayout(false);
             this.PerformLayout();
+
         }
 
         #endregion
